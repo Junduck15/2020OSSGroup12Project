@@ -5,7 +5,7 @@ typedef struct{
     char name[20];
     int studentId;
     char major[20];
-} Info;
+} info;
 
 int curcount, count, menu;
 
