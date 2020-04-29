@@ -2,7 +2,7 @@
 #include <string.h>
 
 typedef struct{
-    char name[20];;
+    char name[20];
     int studentId;
     char major[20];
 } Info;
