@@ -11,3 +11,5 @@
 팀 소개 & 역할:
 21700302 박준석(전산심화): 코딩, 위키
 21700575 이준희(건축/전산) : 코딩, 알고리즘, 내용 정리
+
+자세한 사항은 wiki를 참조 https://github.com/Junduck15/2020OSSGroup12Project/wiki
