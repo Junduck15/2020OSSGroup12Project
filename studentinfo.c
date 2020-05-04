@@ -13,6 +13,7 @@ int selectMenu() {
     	printf("=> 원하는 메뉴는? ");
     	scanf("%d", &menu);
     	return menu;
+}
 
 int addInfo(info *s){
 	printf("\n 학생의 이름은? ");
@@ -28,21 +29,21 @@ int addInfo(info *s){
 	return 1; 
 
 }
-void listIroduct(info *s,int count){
+void listInfo(info *s,int count){
 
     printf("\nNo. Name    StudentID   Major\n");
     printf("================================\n");
     for(int i=0; i<count; i++){
         if( s[i].studentID == -1) continue;
         printf("%2d.", i+1);
-        readProduct(s[i]);
+        readInfo(s[i]);
     }
     printf("\n");
 }
 
 int selectDataNo(info *s, int count){
     int no;
-    listProduct(s,count);
+    listInfo(s,count);
     printf("번호는 (취소:0)?");
     scanf("%d",&no);
     getchar();
@@ -57,3 +58,118 @@ return;
 printf("%s %3d %[^\n]\n", s.name, &s.studentID, s.major);
 }
 
+int updateInfo(info *s){
+    printf("\n 학생의 이름은? ");
+	scanf("%s", s->name);
+	
+	printf("\n 학생의 학번은? ");
+	scanf("%d", &s->studentID);
+
+	printf("\n 학생의 전공은? ");
+	scanf("%[^\n]s", s->major);
+    
+    printf("=> 수정성공!\n");
+    return 1;
+}
+	
+int deleteInfo(info *s){
+    s->studentID = -1;
+    return 1;
+}
+
+void saveData(info *s, int count){
+    FILE *fp;
+    fp = fopen("stduentinfo.txt", "wt");
+    for(int i=0;i<count; i++){
+        if(s[i].studentID == -1 ) continue;
+        fprintf(fp, "%s %d %[^\n]s\n", s[i].name, s[i].studentID, s[i].major);
+    }
+    fclose(fp);
+    printf("저장됨!\n");
+}
+
+int loadData(info s[]){
+    FILE *fp;
+    fp = fopen("stduentinfo.txt", "rt");
+    if(fp ==NULL){
+        printf("=> 파일 없음\n");
+        return 0;
+    }
+    for(; ; count++){
+        fscanf(fp,"%s %d %[^\n]s", s[count].name, &s[count].studentID, &s[count].major);
+        if(feof(fp)){ break;}
+    }
+    fclose(fp);
+    printf("=> 로딩 성공!\n");
+    return count;
+}
+
+void searchByName(info *s, int count){
+    int scount =0;
+    char search[20];
+
+    printf("검색할 이름? ");
+    scanf("%s", search);
+
+    printf("\nNo. Name    StudentID   Major\n");
+    printf("================================\n");
+    for(int i=0; i<count; i++){
+        if(s[i].studentID != -1){
+            if(strstr(s[i].name, search)){
+                printf("%2d ", i+1);
+                readInfo(s[i]);
+                scount++;
+            }
+        }
+    }
+
+    if(scount == 0) printf("=> 검색된 데이터 없음!");
+    printf("\n");
+}
+	
+void searchByNum(info *s, int count){
+    int scount =0;
+    int search;
+
+    printf("검색할 학번? ");
+    scanf("%s", search);
+
+    printf("\nNo. Name    StudentID   Major\n");
+    printf("================================\n");
+    for(int i=0; i<count; i++){
+        if(s[i].studentID != -1){
+            if(s[i].studentID == search){
+                printf("%2d ", i+1);
+                readInfo(s[i]);
+                scount++;
+            }
+        }
+    }
+
+    if(scount == 0) printf("=> 검색된 데이터 없음!");
+    printf("\n");
+}
+	
+void searchByMajor(info *s, int count){
+    int scount =0;
+    char search[20];
+
+    printf("검색할 전공? ");
+    scanf("%[^\n]s", search);
+
+    printf("\nNo. Name    StudentID   Major\n");
+    printf("================================\n");
+    for(int i=0; i<count; i++){
+        if(s[i].studentID != -1){
+            if(strstr(s[i].major, search)){
+                printf("%2d ", i+1);
+                readInfo(s[i]);
+                scount++;
+            }
+        }
+    }
+
+    if(scount == 0) printf("=> 검색된 데이터 없음!");
+    printf("\n");
+}
+	
