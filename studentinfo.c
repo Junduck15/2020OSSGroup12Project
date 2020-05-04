@@ -1,5 +1,19 @@
 #include "studentinfo.h"
 
+int selectMenu() {
+	int menu;
+	printf("\n*** CRUD 반 관리 시스템 ***\n");
+   	printf("1. 학생정보 추가\n");
+    	printf("2. 학생정보 읽기\n");
+    	printf("3. 학생정보 수정\n");
+    	printf("4. 학생정보 삭제\n");
+    	printf("5. 학생정보 검색\n");
+	printf("6. 파일 저장\n");
+    	printf("0. 종료\n\n");
+    	printf("=> 원하는 메뉴는? ");
+    	scanf("%d", &menu);
+    	return menu;
+
 int addInfo(info *s){
 	printf("\n 학생의 이름은? ");
 	scanf("%s", s->name);
