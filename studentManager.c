@@ -38,7 +38,7 @@ int main(void){
                 continue;
             }
             int deleteok;
-            printf("정말로 삭제하시겠습니까?(삭제:1)");
+            printf("정말로 삭제하시겠습니까?(삭제:1) ");
             getchar();
             scanf("%d",&deleteok);
             if(deleteok == 1){
@@ -55,13 +55,26 @@ int main(void){
             }
         }
         else if (menu == 6){
-            searchByName(slist, curcount);
-        }
-        else if (menu == 7){
-            searchByNum(slist, curcount);
-        }
-        else if (menu == 8){
-            searchByMajor(slist, curcount);
+		int searchType = 0;
+		printf("\n1. 학생이름으로 검색 \n");
+		printf("\n2. 학생학번으로 검색 \n");
+		printf("\n3. 학생전공으로 검색 \n");
+		printf(".    번호를 고르시오(취소:0) ");
+		scanf("%d", &searchType);
+		if (searchType == 0) {
+			printf("취소됨!\n");
+			continue;
+		}
+		if (searchType == 1) {
+			searchByName(s, curcount);
+		}
+		if (searchType == 2) {
+			searchByNum(s, curcount);
+		}
+		if (searchType == 3) {
+			searchByMajor(s, curcount);
+		}
+		
         }
     }
     printf("종료됨!\n");
