@@ -66,13 +66,13 @@ int main(void){
 			continue;
 		}
 		if (searchType == 1) {
-			searchByName(s, curcount);
+			searchByName(slist, curcount);
 		}
 		if (searchType == 2) {
-			searchByNum(s, curcount);
+			searchByNum(slist, curcount);
 		}
 		if (searchType == 3) {
-			searchByMajor(s, curcount);
+			searchByMajor(slist, curcount);
 		}
 		
         }
