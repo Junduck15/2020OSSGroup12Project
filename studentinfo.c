@@ -7,8 +7,8 @@ int selectMenu() {
     	printf("2. 학생정보 읽기\n");
     	printf("3. 학생정보 수정\n");
     	printf("4. 학생정보 삭제\n");
-    	printf("5. 학생정보 검색\n");
-	printf("6. 파일 저장\n");
+    	printf("5. 파일저장\n");
+	printf("6. 학생정보 검색\n");
     	printf("0. 종료\n\n");
     	printf("=> 원하는 메뉴는? ");
     	scanf("%d", &menu);
@@ -56,7 +56,7 @@ if (s.studentID == -1){
 printf ("학생 정보가 없음\n");
 return;
 }
-printf("%s %3d %s\n", s.name, s.studentID, s.major);
+printf("%s %3d %[^\n]s \n", s.name, s.studentID, s.major);
 }
 
 int updateInfo(info *s){
