@@ -18,12 +18,13 @@ int selectMenu() {
 int addInfo(info *s){
 	printf("\n 학생의 이름은? ");
 	scanf("%s", s->name);
+	getchar();
 	
 	printf("\n 학생의 학번은? ");
 	scanf("%d", &s->studentID);
 
 	printf("\n 학생의 전공은? ");
-	scanf("%[^\n]s", s->major);
+	scanf("\n%[^\n]s", s->major);
 	
 	printf("=> 추가됨!\n");
 	return 1; 
@@ -55,7 +56,7 @@ if (s.studentID == -1){
 printf ("학생 정보가 없음\n");
 return;
 }
-printf("%s %3d %[^\n]\n", s.name, &s.studentID, s.major);
+printf("%s %3d %s\n", s.name, s.studentID, s.major);
 }
 
 int updateInfo(info *s){
@@ -82,7 +83,7 @@ void saveData(info *s, int count){
     fp = fopen("stduentinfo.txt", "wt");
     for(int i=0;i<count; i++){
         if(s[i].studentID == -1 ) continue;
-        fprintf(fp, "%s %d %[^\n]s\n", s[i].name, s[i].studentID, s[i].major);
+        fprintf(fp, "%s %d %s\n", s[i].name, s[i].studentID, s[i].major);
     }
     fclose(fp);
     printf("저장됨!\n");
@@ -96,7 +97,7 @@ int loadData(info s[]){
         return 0;
     }
     for(; ; count++){
-        fscanf(fp,"%s %d %[^\n]s", s[count].name, &s[count].studentID, &s[count].major);
+        fscanf(fp,"%s %d %[^\n]s", s[count].name, &s[count].studentID, s[count].major);
         if(feof(fp)){ break;}
     }
     fclose(fp);
@@ -132,7 +133,7 @@ void searchByNum(info *s, int count){
     int search;
 
     printf("검색할 학번? ");
-    scanf("%s", search);
+    scanf("%d", &search);
 
     printf("\nNo. Name    StudentID   Major\n");
     printf("================================\n");
