@@ -46,15 +46,8 @@ int main(void){
                 count --;}
             }
         }
-        else if (menu ==5){
-            if(count ==0){
-                printf("데이터가 없습니다\n");
-            }
-            else{
-                saveData(slist, curcount);
-            }
-        }
-        else if (menu == 6){
+        
+        else if (menu == 5){
 		int searchType = 0;
 		printf("\n1. 학생이름으로 검색 \n");
 		printf("\n2. 학생학번으로 검색 \n");
@@ -76,7 +69,16 @@ int main(void){
 		}
 		
         }
+	else if (menu ==6){
+            if(count ==0){
+                printf("데이터가 없습니다\n");
+            }
+            else{
+                saveData(slist, curcount);
+            }
+        }
     }
+	
     printf("종료됨!\n");
     return 0;
 }
