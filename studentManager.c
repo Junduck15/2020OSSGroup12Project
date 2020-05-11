@@ -1,4 +1,11 @@
 #include "studentinfo.h"
+#define ADD 1
+#define READ 2
+#define UPDATE 3
+#define DELETE 4
+#define SEARCH 5
+#define SAVE 6
+#define QUIT 0
 
 info slist[100];
     
@@ -11,19 +18,19 @@ int main(void){
 
     while (1){
         menu = selectMenu();
-        if (menu == 0) break;
+        if (menu == QUIT) break;
         
-        if (menu == 1){
+        if (menu == ADD){
             count += addInfo(&slist[curcount++]);
         }
-        else if (menu == 2){
+        else if (menu == READ){
             if (count > 0){
                 listInfo(slist,curcount);
             }
             else{ printf("데이터가 없습니다\n");
             }
         }
-        else if (menu == 3){
+        else if (menu == UPDATE){
             int no = selectDataNo(slist, curcount);
             if(no ==0){
                 printf("=> 취소됨!\n");
@@ -31,7 +38,7 @@ int main(void){
             }
             updateInfo(&slist[no-1]);
         }
-        else if (menu == 4){
+        else if (menu == DELETE){
             int no = selectDataNo(slist, curcount);
             if(no == 0){
                 printf("=> 취소됨!\n");
@@ -46,15 +53,8 @@ int main(void){
                 count --;}
             }
         }
-        else if (menu ==5){
-            if(count ==0){
-                printf("데이터가 없습니다\n");
-            }
-            else{
-                saveData(slist, curcount);
-            }
-        }
-        else if (menu == 6){
+        
+        else if (menu == SEARCH){
 		int searchType = 0;
 		printf("\n1. 학생이름으로 검색 \n");
 		printf("\n2. 학생학번으로 검색 \n");
@@ -76,7 +76,16 @@ int main(void){
 		}
 		
         }
+	else if (menu == SAVE){
+            if(count ==0){
+                printf("데이터가 없습니다\n");
+            }
+            else{
+                saveData(slist, curcount);
+            }
+        }
     }
+	
     printf("종료됨!\n");
     return 0;
 }

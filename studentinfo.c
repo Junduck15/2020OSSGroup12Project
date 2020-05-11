@@ -80,7 +80,7 @@ int deleteInfo(info *s){
 
 void saveData(info *s, int count){
     FILE *fp;
-    fp = fopen("stduentinfo.txt", "wt");
+    fp = fopen("studentinfo.txt", "wt");
     for(int i=0;i<count; i++){
         if(s[i].studentID == -1 ) continue;
         fprintf(fp, "%s %d %s\n", s[i].name, s[i].studentID, s[i].major);
@@ -91,7 +91,7 @@ void saveData(info *s, int count){
 
 int loadData(info s[]){
     FILE *fp;
-    fp = fopen("stduentinfo.txt", "rt");
+    fp = fopen("studentinfo.txt", "rt");
     if(fp ==NULL){
         printf("=> 파일 없음\n");
         return 0;
@@ -156,6 +156,7 @@ void searchByMajor(info *s, int count){
     char search[20];
 
     printf("검색할 전공? ");
+    getchar();
     scanf("%[^\n]s", search);
 
     printf("\nNo. Name    StudentID   Major\n");
