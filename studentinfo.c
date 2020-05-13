@@ -56,7 +56,7 @@ if (s.studentID == -1){
 printf ("학생 정보가 없음\n");
 return;
 }
-printf("%s %3d %[^\n]s \n", s.name, s.studentID, s.major);
+printf("%s %3d %s \n", s.name, s.studentID, s.major);
 }
 
 int updateInfo(info *s){
@@ -65,6 +65,7 @@ int updateInfo(info *s){
 	
 	printf("\n 학생의 학번은? ");
 	scanf("%d", &s->studentID);
+	getchar();
 
 	printf("\n 학생의 전공은? ");
 	scanf("%[^\n]s", s->major);
