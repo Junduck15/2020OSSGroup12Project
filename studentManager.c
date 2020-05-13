@@ -3,8 +3,8 @@
 #define READ 2
 #define UPDATE 3
 #define DELETE 4
-#define SEARCH 5
-#define SAVE 6
+#define SEARCH 6
+#define SAVE 5 
 #define QUIT 0
 
 info slist[100];
@@ -46,7 +46,6 @@ int main(void){
             }
             int deleteok;
             printf("정말로 삭제하시겠습니까?(삭제:1) ");
-            getchar();
             scanf("%d",&deleteok);
             if(deleteok == 1){
                 if(deleteInfo(&slist[no-1])){
